@@ -1,0 +1,20 @@
+
+struct Script {
+  text ?: [struct ScriptText {[string] : any}],
+  last_cd ?: int,
+  // 更改這段句子最後停滯的時間
+  no_reset ?: boolean,
+  // 若不想要重製當前的字串，可以設定成true（預設是false）
+}
+
+struct Settings {
+  cd : int,
+  last_cd ?: int,
+  sound ?: string,
+}
+
+dispatch :storage[text:main] to struct {
+  script ?: [Script],
+  settings ?: Settings,
+  [string] : any,
+}
