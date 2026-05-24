@@ -1,14 +1,7 @@
 type Script = (
     struct {
-        mode: "reverse",
-        count?: int,
-        // 往回退幾個字
-        cd?: int,
-        // 更改回退速度
-        delay?: int,
-    } |
-    struct {
         mode?: "text",
+        // 預設值 == "text"
         text?: [struct {
             [string]: any,
             text: string,
@@ -17,8 +10,27 @@ type Script = (
         cd?: int,
         // 更改每個步驟間的冷卻
         delay?: int,
-        // 更改指令執行完的停頓
+        // 更改腳本執行完的停頓
         no_clear?: boolean,
+        // no_clear:1b = 保留當前文字到下一個腳本
+    } |
+    struct {
+        mode: "command",
+        command: string,
+        cd?: int,
+        delay?: int,
+    } |
+    struct {
+        mode: "reverse",
+        count?: int,
+        // 往回退幾個字
+        speed?: int,
+        // 一次回退幾個字
+        no_sound?: boolean,
+        // 回退時是否要執行 sound
+        cd?: int,
+        // 更改回退速度
+        delay?: int,
     } |
 )
 

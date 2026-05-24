@@ -1,7 +1,4 @@
 
 tag @s add text.body.delay
-
-execute store result score @s text.settings.delay run data get entity @s data.script[0].delay
-scoreboard players operation @s text.duration = @s text.settings.delay
-
-data remove entity @s data.script[0].delay
+execute store result score @s text.duration run function text:sys/body/per/delay/2
+execute if score @s text.duration matches ..0 run function text:sys/body/per/clear

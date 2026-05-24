@@ -9,6 +9,7 @@ data modify storage text:main settings set value {\
 ## scripts
 data modify storage text:main script append value {text:[{text:"Hi,"},{text:" ",cd:10},{text:"it's just for ",color:"gray",cd:2},{text:"testing.",color:"light_purple",cd:3}],delay:10}
 
+data modify storage text:main script append value {mode:"command",command:"say 1",delay:10}
 data modify storage text:main script append value {text:[{text:"And this ",cd:2},{text:"just for ",color:"gray",cd:1},{text:"test",color:"gray",cd:5}],delay:2,no_clear:1b}
 
 data modify storage text:main script append value {mode:"reverse",count:8,cd:1}
