@@ -1,0 +1,36 @@
+type Script = (
+    struct {
+        mode: "reverse",
+        count?: int,
+        // 往回退幾個字
+        cd?: int,
+        // 更改回退速度
+        delay?: int,
+    } |
+    struct {
+        mode?: "text",
+        text?: [struct {
+            [string]: any,
+            text: string,
+            cd?: int,
+        }],
+        cd?: int,
+        // 更改每個步驟間的冷卻
+        delay?: int,
+        // 更改指令執行完的停頓
+        no_clear?: boolean,
+    } |
+)
+
+struct Settings {
+    mode: ("hover"),
+    cd: int,
+    delay: int,
+    sound: string,
+}
+
+dispatch :storage[text:main] to struct {
+    script?: [Script],
+    settings?: Settings,
+    [string]: any,
+}

@@ -1,10 +1,11 @@
 
-# last char
-execute unless data entity @s data.script[0].text[0] run return run function text:sys/text/clear
+# if (text == null) :
+execute unless data entity @s data.script[0].text[0] run return run function text:sys/text/delay
 
-# char
+# else :
+execute if data entity @s data.script[0].text[0].cd run function text:sys/text/cd
+
 function text:sys/text/interpret/use
-function text:sys/text/loop with entity @s data.settings
+function text:sys/text/loop
 
-# reset
 data remove entity @s data.script[0].text[0]

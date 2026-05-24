@@ -1,6 +1,7 @@
 {
-  "pack": {
-    "description": "Text",
-    "pack_format": 81
-  }
+    "pack": {
+        "description": "Text",
+        "min_format": [101,0],
+        "max_format": [101,0]
+    }
 }
