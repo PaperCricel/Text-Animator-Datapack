@@ -35,7 +35,8 @@ type Script = (
 )
 
 struct Settings {
-    mode: ("hover"),
+    mode: ("hover" | string),
+    id: string,
     cd: int,
     delay: int,
     sound: string,

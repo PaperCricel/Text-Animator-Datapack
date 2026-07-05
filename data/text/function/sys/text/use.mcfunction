@@ -1,6 +1,6 @@
 
 # if (text == null) :
-execute unless data entity @s data.script[0].text[0] run return run function text:sys/text/delay
+execute unless data entity @s data.script[0].text[0] run return run function text:sys/text/clear
 
 # else :
 execute if data entity @s data.script[0].text[0].cd run function text:sys/text/cd

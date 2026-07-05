@@ -1,9 +1,9 @@
 
 scoreboard objectives add text.main dummy
 scoreboard objectives add text.duration dummy
+scoreboard objectives add text.index dummy
 
 scoreboard objectives add text.settings.cd dummy
-
 scoreboard objectives add text.reverse.speed dummy
 
 tellraw Paper_Cricel "§e§l[Text Animator]§r Reloaded!"

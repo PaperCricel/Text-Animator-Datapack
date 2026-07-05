@@ -2,14 +2,16 @@
 ## settings
 data modify storage text:main settings set value {\
     mode: "hover",\
-    cd: 1, delay: 20,\
-    sound: 'playsound minecraft:ui.button.click master @a ~ ~ ~ 0.025 2',\
+    id: "sample/",\
+    cd: 1,\
+    delay: 20,\
+    sound: {id: "minecraft:ui.button.click", volume: 0.025, pitch: 2},\
 }
 
 ## scripts
 data modify storage text:main script append value {text:[{text:"Hi,"},{text:" ",cd:10},{text:"it's just for ",color:"gray",cd:2},{text:"testing.",color:"light_purple",cd:3}],delay:10}
 
-data modify storage text:main script append value {mode:"command",command:"say 1",delay:10}
+data modify storage text:main script append value {delay:10}
 data modify storage text:main script append value {text:[{text:"And this ",cd:2},{text:"just for ",color:"gray",cd:1},{text:"test",color:"gray",cd:5}],delay:2,no_clear:1b}
 
 data modify storage text:main script append value {mode:"reverse",count:8,cd:1}

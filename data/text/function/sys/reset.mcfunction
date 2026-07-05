@@ -1,4 +1,4 @@
 
 data remove storage text:temp text
 
-kill @e[type=text_display,tag=text.body]
+kill @e[tag=text.body,type=text_display]
