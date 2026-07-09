@@ -9,8 +9,8 @@ execute store result entity @s data.script[0].count int 1 run scoreboard players
 scoreboard players operation #speed text.main = @s text.reverse.speed
 function text:sys/reverse/loop2
 
-function text:sys/body/render
-scoreboard players operation @s text.duration = @s text.settings.cd
+function text:sys/text/word/render
+scoreboard players operation @s text.duration = @s text.setting.cd
 
 # fx
 execute unless data entity @s data.script[0].no_sound if data entity @s data.settings.sound run function text:sys/text/fx with entity @s data.settings.sound

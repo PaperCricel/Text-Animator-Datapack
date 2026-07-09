@@ -1,3 +1,5 @@
 
-execute store result score @s text.settings.cd run data get entity @s data.script[0].text[0].cd
-data remove entity @s data.script[0].text[0].cd
+# effective cd : text[0].cd ?? script[0].cd ?? settings.cd
+execute if data entity @s data.script[0].text[0].cd run return run data get entity @s data.script[0].text[0].cd
+execute if data entity @s data.script[0].cd run return run data get entity @s data.script[0].cd
+return run data get entity @s data.settings.cd

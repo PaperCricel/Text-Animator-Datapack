@@ -3,9 +3,10 @@
 execute unless data entity @s data.script[0].text[0] run return run function text:sys/text/clear
 
 # else :
-execute if data entity @s data.script[0].text[0].cd run function text:sys/text/cd
+execute store result score @s text.setting.delay run data get entity @s data.script[0].text[0].delay
 
-function text:sys/text/interpret/use
-function text:sys/text/loop
+    # if (command) :
+execute if data entity @s data.script[0].text[0].command run return run function text:sys/text/command/use
 
-data remove entity @s data.script[0].text[0]
+    # else :
+function text:sys/text/word/use

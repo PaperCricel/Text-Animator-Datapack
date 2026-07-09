@@ -1,5 +1,5 @@
 
-execute store result score @s text.settings.cd run data get storage text:main settings.cd
+execute store result score @s text.setting.cd run data get storage text:main settings.cd
 
 data modify entity @s data set from storage text:main
 data modify entity @s data.hook.id set from entity @s data.settings.id
