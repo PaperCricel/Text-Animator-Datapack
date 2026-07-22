@@ -1,10 +1,12 @@
 
+execute unless entity @e[tag=text.sample2.man,type=armor_stand,limit=1] run return run tellraw @s ["",{color:"red",text:"",extra:[{bold:true,text:"[Text Animator]"}," No sample man detected, please run ",{underlined:true,text:"/function text:sample2/api/init",click_event:{action:"run_command",command:"/function text:sample2/api/init"},hover_event:{action:"show_text",value:["",{text:"Run function."}]}}," in advance."]}]
+
 data modify storage text:main settings set value {\
+    id: "sample2",\
     mode: "hover",\
-    id: "sample2/",\
-    cd: 2,\
-    delay: 10,\
+    cd: 2, delay: 10,\
     sound: {id: "minecraft:ui.button.click", volume: 0.05, pitch: 2},\
+    nbt: {teleport_duration:1},\
 }
 
 data modify storage text:main script append value {text:[{bold:true,text:"嘿！",delay:10},{command:"1"},{bold:false,text:"你知道嗎？"}]}
@@ -18,5 +20,4 @@ data modify storage text:main script append value {mode:"reverse",count:21,speed
 data modify storage text:main script append value {text:[{text:"沒...",cd:3,delay:5},{text:" 沒什麼"}]}
 data modify storage text:main script append value {text:[{text:"我什麼都沒說"}],delay:20}
 
-## main()
-execute positioned 2 1 1.5 run function text:sys/start with storage text:main settings
+execute at @e[tag=text.sample2.man,type=armor_stand,limit=1] positioned ^ ^1 ^1 run function text:sys/start with storage text:main settings

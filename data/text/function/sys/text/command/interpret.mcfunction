@@ -1,2 +1,2 @@
 
-$function text:$(id)$(index)-$(command)
+$function text:$(id)/$(index)-$(command)

@@ -1,0 +1,109 @@
+// ==== 文字元素 ====
+// text 陣列裡的每個元素，可以是「文字」或「插入的指令」
+type TextElement = (
+    struct {
+        // 文字：會被逐字拆開播放
+        [string]: any,
+        // 其餘皆為原版文字元件屬性 (color, bold, italic ...)
+        text: string,
+        cd?: int,
+        // 更改這段文字的逐字冷卻 (cd: 文字 > 腳本 > 設定)
+        delay?: int,
+        // 在播放這段文字前的停頓
+    } |
+    struct {
+        // 指令：在文字中間插入，執行 $(id)/$(index)-$(command)
+        command: string,
+        delay?: int,
+        // 執行這個指令前的停頓
+    } |
+)
+
+// ==== 腳本 ====
+// script 陣列裡的每個元素
+type Script = (
+    struct {
+        mode?: "text",
+        // 預設值 == "text"
+        text?: [TextElement],
+        // 這一步要播放的文字 (省略 = 只做停頓)
+        cd?: int,
+        // 更改每個步驟間的冷卻
+        delay?: int,
+        // 更改腳本執行完的停頓
+        no_clear?: boolean,
+        // no_clear:1b = 保留當前文字到下一個腳本
+    } |
+    struct {
+        mode: "reverse",
+        count?: int,
+        // 往回退幾個字
+        speed?: int,
+        // 一次回退幾個字
+        no_sound?: boolean,
+        // 回退時是否要執行 sound
+        cd?: int,
+        // 更改回退速度
+        delay?: int,
+        // 更改回退完的停頓
+    } |
+)
+
+// ==== 音效 ====
+type Sound = struct {
+    id: string,
+    source?: string,
+    // 預設值 == "master"
+    target?: string,
+    // 預設值 == "@a"
+    volume?: float,
+    // 預設值 == 1
+    pitch?: float,
+    // 預設值 == 1
+}
+
+// ==== 自訂 NBT ====
+// 賦予 text_display 實體的原版 NBT (例：transformation.scale、see_through、line_width)
+// 在 sys/start 偵測到後，於 sys/start/nbt 用 data merge 合併到實體上
+type DisplayNbt = struct {
+    [string]: any,
+}
+
+// ==== 設定 ====
+// settings.mode 決定顯示載體 (body)：hover / title
+// 註：title 模式需額外填 selector 與 type；
+//     若只寫 mode:"title" 卻沒補這兩個欄位，Spyglass 會報 "Expected hover" 提醒你補齊
+type Settings = (
+    struct {
+        mode: "hover",
+        // 用 text_display 實體在世界中顯示文字
+        id: string,
+        // 腳本的命名空間前綴 (例：呼叫 $(id)/$(index)-$(command))
+        cd?: int,
+        // 預設值 == 1
+        delay?: int,
+        // 預設值 == 0
+        sound?: Sound,
+        nbt?: DisplayNbt,
+        // 自訂 text_display 的原版 NBT
+    } |
+    struct {
+        mode: "title",
+        id: string,
+        cd?: int,
+        delay?: int,
+        sound?: Sound,
+        nbt?: DisplayNbt,
+        // 自訂 text_display 的原版 NBT
+        selector?: string,
+        // 顯示對象，預設值 == "@a"
+        "type"?: ("title" | "subtitle" | "actionbar"),
+        // 顯示位置，預設值 == "actionbar"
+    } |
+)
+
+dispatch :storage[text:main] to struct {
+    script?: [Script],
+    settings?: Settings,
+    [string]: any,
+}

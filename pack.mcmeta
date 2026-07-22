@@ -1,6 +1,6 @@
 {
     "pack": {
-        "description": "Text",
+        "description": ["",{"color":"gray","text":"● ꜰᴜɴᴄᴛɪᴏɴᴀʟɪᴛʏ : A tool to animate your text.\n● ᴀᴜᴛʜᴏʀ : Paper_Cricel"}],
         "min_format": [101,0],
         "max_format": [101,0]
     }
