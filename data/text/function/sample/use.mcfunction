@@ -1,7 +1,6 @@
 
 data modify storage text:main settings set value {\
     id: "sample",\
-    mode: "hover",\
     cd: 1, delay: 20,\
     sound: {id: "minecraft:ui.button.click", volume: 0.25, pitch: 2},\
 }
